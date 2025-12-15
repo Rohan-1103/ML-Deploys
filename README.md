@@ -1,13 +1,11 @@
-# 📦 Streamlit App Starter Kit 
+# 📦 Machine Learning Deployment Repository 
 ```
-⬆️ (Replace above with your app's name)
+Will be Deploying all the ML projects here
 ```
-
-Description of the app ...
 
 ## Demo App
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://app-starter-kit.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ML-Deploys.streamlit.app/)
 
 ## GitHub Codespaces
 
