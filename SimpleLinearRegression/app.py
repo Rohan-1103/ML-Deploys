@@ -18,5 +18,10 @@ house_size = st.slider(
 # Predict
 if st.button("Predict Price"):
     prediction = model.predict([[house_size]])
-    price = prediction.item()
-    st.success(f"Estimated Price: ₹ {price:.2f} Lakhs")
+    price_lakhs = prediction.item()
+
+    if price_lakhs >= 100:
+        price_crore = price_lakhs / 100
+        st.success(f"Estimated Price: ₹ {price_crore:.2f} Crores")
+    else:
+        st.success(f"Estimated Price: ₹ {price_lakhs:.2f} Lakhs")
