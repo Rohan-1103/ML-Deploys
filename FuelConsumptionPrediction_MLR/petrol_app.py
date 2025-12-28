@@ -1,14 +1,21 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import os
 
 # Page config must be first Streamlit command
 st.set_page_config(page_title="Petrol Consumption Predictor", layout="wide")
 
 def load_model():
     try:
-        with open("petrol_consumption_model.pkl", "rb") as file:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        st.write("📂 Files in app directory:", os.listdir(base_dir))  # 🔍 Debug line
+
+        model_path = os.path.join(base_dir, "petrol_consumption_model.pkl")
+
+        with open(model_path, "rb") as file:
             return pickle.load(file)
+
     except Exception as e:
         st.error(f"❌ Error loading model: {e}")
         return None
