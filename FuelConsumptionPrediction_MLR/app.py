@@ -8,7 +8,7 @@ st.set_page_config(page_title="Petrol Consumption Predictor", layout="wide")
 @st.cache_resource
 def load_model():
     try:
-        with open("model.pkl", "rb") as file:
+        with open("petrol_consumption_model.pkl", "rb") as file:
             return pickle.load(file)
     except Exception as e:
         st.error(f"❌ Error loading model: {e}")
@@ -22,7 +22,7 @@ def main():
     if model_loaded is None:
         return
 
-    # Features expected by the trained model (order matters!)
+    # Features expected by the trained petrol model (order matters!)
     expected_features = [
         'Petrol_tax',
         'Average_income',
@@ -57,13 +57,13 @@ def main():
             )
 
         else:
-            # Display percentage (0–100) but convert to fraction (0–1) for model
+            # Show 0–100% to user, convert to 0–1 for model
             perc = st.sidebar.slider(label + " (%)", int(min_val), int(max_val), 50)
             input_values[feature] = perc / 100
 
-    # Display values for user (show % back)
+    # Display values back to user (with %)
     display_values = input_values.copy()
-    display_values['Population_Driver_licence(%)'] = display_values['Population_Driver_licence(%)'] * 100
+    display_values['Population_Driver_licence(%)'] *= 100
 
     st.subheader("📋 Your Input Values")
     st.dataframe(pd.DataFrame([display_values]))
