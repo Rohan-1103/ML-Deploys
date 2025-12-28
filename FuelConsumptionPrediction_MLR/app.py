@@ -5,7 +5,6 @@ import pickle
 # Page config must be first Streamlit command
 st.set_page_config(page_title="Petrol Consumption Predictor", layout="wide")
 
-@st.cache_resource
 def load_model():
     try:
         with open("petrol_consumption_model.pkl", "rb") as file:
@@ -22,7 +21,7 @@ def main():
     if model_loaded is None:
         return
 
-    # Features expected by the trained petrol model (order matters!)
+    # Features expected by the trained model
     expected_features = [
         'Petrol_tax',
         'Average_income',
