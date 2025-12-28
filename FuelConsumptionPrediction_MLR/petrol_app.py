@@ -9,7 +9,7 @@ st.set_page_config(page_title="Petrol Consumption Predictor", layout="wide")
 def load_model():
     try:
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        st.write("📂 Files in app directory:", os.listdir(base_dir))  # 🔍 Debug line
+        # st.write("📂 Files in app directory:", os.listdir(base_dir))  # 🔍 Debug line
 
         model_path = os.path.join(base_dir, "petrol_consumption_model.pkl")
 
@@ -64,7 +64,7 @@ def main():
 
         else:
             # Show 0–100% to user, convert to 0–1 for model
-            perc = st.sidebar.slider(label + " (%)", int(min_val), int(max_val), 50)
+            perc = st.sidebar.slider(label, int(min_val), int(max_val), 50)
             input_values[feature] = perc / 100
 
     # Display values back to user (with %)
