@@ -6,10 +6,12 @@ from sklearn.decomposition import PCA
 from sklearn.linear_model import LogisticRegression
 
 # Load the exported model and preprocessing components
-model = joblib.load('logistic_regression_model.joblib')
-encoder = joblib.load('one_hot_encoder.joblib')
-scaler = joblib.load('standard_scaler.joblib')
-pca = joblib.load('pca_model.joblib')
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model = joblib.load(os.path.join(BASE_DIR, "logistic_regression_model.joblib"))
+encoder = joblib.load(os.path.join(BASE_DIR, "one_hot_encoder.joblib"))
+scaler = joblib.load(os.path.join(BASE_DIR, "standard_scaler.joblib"))
+pca = joblib.load(os.path.join(BASE_DIR, "pca_model.joblib"))
 
 # Define feature lists (these were identified during preprocessing)
 categorical_features = ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
